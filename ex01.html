@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex01</title>
+</head>
+<body>
+<script>
+    let Mobile = function (battery, status, draftMessage, receivedMessage, sentMessage) {
+        this.battery = battery;
+        this.status = status;
+        this.draftMessage = draftMessage;
+        this.receivedMessage = receivedMessage;
+        this.sentMessage = sentMessage;
+        this.checkStatus = function () {
+            if (battery > 0 && battery <= 100 && status == true) {
+/*                alert("may dang mo");*/
+                return true;
+            } else {
+                alert("may dang tat");
+                return false;
+            }
+        }
+        this.chargeBattery = function () {
+            if (battery != 100) {
+                while (battery < 100) {
+                    alert("Dang sac");
+                    battery++;
+                }
+            }
+            if (battery == 100) {
+                alert("Da sac day");
+            }
+        }
+        this.getDraftMessage = function () {
+            return draftMessage;
+        }
+        this.setDraftMessage = function () {
+            switch (this.checkStatus()) {
+                case true:
+                    draftMessage = prompt("soan tin nhan: ");
+                    battery--;
+                    break;
+                case false:
+                    alert("may khong hoat dong");
+                    break;
+            }
+        }
+        this.getReceivedMessage = function () {
+            return receivedMessage;
+        }
+        this.setReceivedMessage = function (sentMessage) {
+            switch (this.checkStatus()) {
+                case true:
+                    receivedMessage = sentMessage;
+                    battery--;
+                    break;
+                case false:
+                    alert("may khong hoat dong");
+                    break;
+            }
+        }
+        this.getsentMessage = function () {
+            return sentMessage;
+        }
+        this.setSentMessage = function (draftMessage) {
+            switch (this.checkStatus()) {
+                case true:
+                    sentMessage = draftMessage;
+                    battery--;
+                    break;
+                case false:
+                    alert("may khong hoat dong");
+                    break;
+            }
+        }
+        this.showReceivedMessage = function () {
+            switch (this.checkStatus()) {
+                case true:
+                    alert(receivedMessage);
+                    battery--;
+                    break;
+                case false:
+                    alert("may khong hoat dong");
+                    break;
+            }
+        }
+        this.showSentMessage = function () {
+            switch (this.checkStatus()) {
+                case true:
+                    alert(receivedMessage);
+                    battery--;
+                    break;
+                case false:
+                    alert("may khong hoat dong");
+                    break;
+            }
+        }
+    }
+    let nokia = new Mobile(100, true, "", "", "");
+    let iPhone = new Mobile(100, true, "", "", "");
+    nokia.setDraftMessage();
+    nokia.setSentMessage(nokia.getDraftMessage());
+    iPhone.setReceivedMessage(nokia.getsentMessage());
+    iPhone.showReceivedMessage();
+
+
+</script>
+</body>
+</html>
